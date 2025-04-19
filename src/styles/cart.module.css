@@ -1,0 +1,39 @@
+/* Cart.css */
+.cart {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+min-height: 80vh;
+  }
+  
+  .cart__title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .cart__items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .cart__total {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  .cart__orderButton {
+    background-color: #28a745; /* Yashil rang */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  
+  .cart__orderButton:hover {
+    background-color: #218838; /* Tugmani bosilganda rang o'zgarishi */
+  }

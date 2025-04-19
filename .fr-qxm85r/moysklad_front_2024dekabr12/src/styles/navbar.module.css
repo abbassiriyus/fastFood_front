@@ -1,0 +1,486 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.navbar_body{
+   max-width: 1330px;
+   width: 100%;
+   margin: auto; 
+   /* padding: 20px 20px 0 20px; */
+}
+.navbar_top{
+    display: grid;
+    grid-template-columns: 600px 1.2fr;
+    padding-top: 12px;
+}
+.navbar_top__items{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    align-items: center;
+    font-family: Arial;
+font-size: 14px;
+font-weight: 400;
+line-height: 16.1px;
+text-align: center;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+height: 22px;
+
+}
+.navbar_top__items_second{
+    width: 100%;
+    align-items: center;
+    display: flex;
+    gap: 9px;
+    justify-content: flex-end;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.1px;
+    text-align: center;
+    text-underline-position: from-font;
+    -webkit-text-decoration-skip-ink: none;
+    text-decoration-skip-ink: none;
+    height: 22px;cursor: pointer;
+
+}
+.navbar_top__item_bordered{
+    border: 1px solid #000000;
+    padding: 2px 22px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+.navbar_top__item{
+    cursor: pointer;
+   
+}
+.navbar_top__items a{
+    text-decoration: none;
+    color: #000000;
+}
+.navbarlogo_img{
+    height: 132px;
+    width: auto;
+    cursor: pointer;
+}
+.navbar_bottom{
+    display: grid;
+    grid-template-columns: auto 238px;
+}
+.navbar__action{
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 40px;
+    /* height: 100%; */
+    position: relative;
+    padding-top: 57px;
+}
+.menu__bar{
+    background-color: white;
+    width: 330px;
+    position: fixed;
+    top: 0px;
+    right: 120%;
+    z-index: 123;
+    display: none;
+    height: 100vh;
+}
+
+.navbar__action_item{
+    text-align: center;
+    font-family: Arial;
+font-size: 14px;
+font-weight: 400;
+line-height: 16.1px;
+text-align: center;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+cursor: pointer;
+transition: 1s;
+
+}
+.navbar_savat{
+    position: relative;
+}
+.count__nomber{
+    position: absolute;
+    right: 2px;
+    top: 2.3px;
+    /* background-color: green; */
+    width: 21px;
+    height: 14px;
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.52px;
+    text-align: center;
+    text-underline-position: from-font;
+    -webkit-text-decoration-skip-ink: none;
+    text-decoration-skip-ink: none;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navbarlogo{
+    display: flex;
+gap: 19px;
+padding-top: 3px;
+align-items: center;
+}
+.navbar__country{
+    font-family: Arial;
+font-size: 13px;
+cursor: pointer;
+font-weight: 700;
+line-height: 14.95px;
+text-align: center;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+
+}
+.navbar_location{
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    transition: 1s;
+    cursor: pointer;
+}
+.navbar_location:hover{
+    scale: 1.03;
+}
+.search__icons{
+    transform: rotateY(180deg);
+color: #E91F25;
+font-size: 23px;
+margin: auto;
+cursor: pointer;
+}
+.navbar__filter{
+    display: grid;
+    margin-top: 23px;
+    position: relative;
+    grid-template-columns: 156px auto;
+}
+.navbar__filter__katalog{
+    background: #E91F25;
+height: 50px;
+display: flex;
+cursor: pointer;
+align-items: center;
+font-family: Arial;
+font-size: 16px;
+    gap: 9px;
+font-weight: 400;
+line-height: 16.1px;
+text-align: center;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+color: white;
+justify-content: center;
+}
+.navbar__filter__search{
+    display: grid;
+    grid-template-columns: 50px auto;
+    align-items: center;
+    background: #F3F4F6;
+text-align: center;
+
+}
+.navbar__filter__search input{
+    border: none;
+    background-color: #f3f4f600;
+    outline: none;
+    user-select: none;
+    height: 100%;
+    padding-left: 11px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: black !important;
+}
+.none__pk__toggle{
+    display: none;
+}
+@media (min-width:991px){
+    .navbarlogo_img{
+        margin-left: 43px;
+        margin-top: 26px;
+        height: 105px;
+    }
+}
+
+@media(max-width: 1050px){
+    .navbar__action{
+        gap: 25px;
+    }
+}
+
+@media(max-width:991px){
+.navbar_top{
+    display: none;
+}
+.navbarlogo_img{
+    height: 65px;
+}
+.navbar_location{
+    display: none;
+}
+.navbar_bottom{
+    display: grid;
+    grid-template-columns: 200px auto;
+}
+.navbar__filter{
+    display: grid;
+    margin-top: 9px;
+    grid-template-columns: 40px auto;
+}
+.navbar__filter__katalog{
+    height: 40px;
+}
+.navbar__filter__katalog h5{
+    display: none;
+}
+#none__media{
+    display: none !important;
+}
+.none__pk__toggle{
+    display: block;
+
+}
+.karzinka__image{
+    height: 18px;
+    width: 24px;
+}
+.navbar__action{
+    gap: 15px;
+    padding-top: 23px;
+
+}
+.menu__bar{
+    padding: 20px;
+    display: block;
+    transition: 1.2s;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.count__nomber{
+    position: absolute;
+    right: 0px;
+    top: 0.0125px;
+    width: 18px;
+    height: 12px;
+    font-size: 9px;
+}
+}
+
+@media(max-width: 480px){
+    
+    .navbar__filter__search input{
+        font-size: 11px;
+    }
+
+    .menu__bar{
+        width: 100%;
+    }
+
+    .close__toggle{
+        margin-right: 0 !important;
+    }
+
+    .toolbar__li{
+        font-size: 14px !important;
+    }
+    
+}
+
+.close__toggle{
+    display: flex;
+    justify-content: end;
+    margin-top: 10px;
+    margin-right: 20px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+.toolbar__li{
+list-style: none;
+font-family: Inter;
+font-size: 16px;
+font-weight: 400;
+line-height: 12.1px;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+margin-top: 25px;
+margin-bottom: 10px;
+display: flex;align-items: center;
+gap: 5px;
+}
+.searchResalt{
+    position: absolute; 
+    text-align: left;
+    list-style: none;
+    width: 100%;
+    top: 100%;
+    background-color: white;
+    z-index: 23;
+    display: none;
+}
+.searchResalt ul{
+    list-style: none;
+    margin-left: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.searchResalt li{
+    margin-bottom: 5px;
+
+}
+.navbar__filter__search{
+    position: relative;
+   
+}
+.navbar__filter__katalog{
+    position: relative;
+}
+.katalogPage__category__ul{
+    background-color: white;
+    padding: 20px;
+}
+.katalogPage{
+    position: absolute;
+    top: 100%;
+    left: 0px;
+
+    display: none;
+    width: 100%;
+    z-index: 123;
+}
+.katalogPage__category__li{
+    display: flex;
+    cursor: pointer;
+justify-content: space-between;
+list-style: none;
+width: 100%;
+margin-bottom: 10px;
+transition: 1s;
+}
+.katalogPage__category__li:hover{
+    scale: 1.01;
+}
+.katalogPage__category__li p{
+    font-family: Arial;
+font-size: 14px;
+font-weight: 400;
+line-height: 16.1px;
+letter-spacing: 0.1em;
+text-align: center;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+
+}
+.katalogPage__category{
+    display: grid;
+    grid-template-columns: 250px auto;
+    background-color: white;
+    width: 100%;
+    z-index: 111;
+}
+.katalogPage:hover .katalogPage__category__cards{
+    display: flex;
+}
+.katalogPage__category__cards{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-wrap: wrap;
+    display: none;
+    max-width: 500px;
+    height: 300px;
+    margin-top: 19px;
+}
+.katalogPage__category__card{
+    padding: 30px;
+}
+.katalogPage__category__cards h4{
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18.4px;
+    letter-spacing: 0.1em;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    margin-bottom: 10px;
+    
+}
+.katalogPage__category__cards p{
+    font-family: Arial;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    font-weight: 400;
+    line-height: 16.1px;
+    transition: 1s;
+    letter-spacing: 0.1em;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;    
+}
+.katalogPage__category__cards p:hover{
+    scale: 1.01;
+}
+
+
+.accordion {
+    border-radius: 5px;
+    margin: 20px 0;
+    display: none;
+}
+
+
+
+.accordionheader {
+    padding: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    justify-content: space-between; /* Sarlavha va стрелка o'rtasida bo'shliq */
+    align-items: center; /* Vertikal markazlash */
+}
+
+
+
+.accordioncontent {
+    padding: 5px;
+    background-color: white;
+}
+
+.arrow {
+    margin-left: 10px; /* стрелка va savol o'rtasida bo'shliq */
+    font-size: 1.2em; /* Ikonalar o'lchamini o'zgartirish */
+}
+.accordioncontent p{
+padding-top: 5px;
+font-family: Arial;
+font-size: 12px;
+font-weight: 400;
+line-height: 13.8px;
+letter-spacing: 0.1em;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+
+}
+@media(max-width:700px){
+    .katalogPage__category__ul{
+        display: none;
+    }
+    .katalogPage__category__cards{
+        display: none !important;
+    }
+    .katalogPage__category{
+        display: grid;
+        grid-template-columns:  auto;
+        background-color: white;
+        width: 100%;
+    }
+    .accordion{
+        display: block;
+    }
+}

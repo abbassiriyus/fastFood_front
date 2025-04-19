@@ -1,0 +1,114 @@
+.footer{
+    background: #00415A;
+
+}
+.footer__body{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    padding: 30px 0;
+    gap: 20px;
+    width: 90%;
+    max-width: 1327px;
+    margin: auto;
+}
+.footer__item p{
+    font-family: Arial;
+font-size: 14px;
+font-weight: 400;
+line-height: 16.1px;
+letter-spacing: 0.04em;
+text-align: left;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+color: white;
+margin-bottom: 5px;
+}
+.footer__item h1{
+    font-family: Arial;
+font-size: 20px;
+font-weight: 700;
+line-height: 23.34px;
+letter-spacing: 0.04em;
+text-align: left;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+color: white;
+}
+.footer__item h2{
+    font-family: Arial;
+font-size: 16px;
+font-weight: 700;
+margin-bottom: 10px;
+line-height: 18.4px;
+letter-spacing: 0.04em;
+text-align: left;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+color: white;
+}
+.set__image{
+    display: flex;
+    /* justify-content: space-between; */
+    /* max-width: 230px; */
+    gap: 10px;
+    margin-top: 20px;
+}
+.footer__line{
+    height: 1px;
+    width: 90%;
+    max-width: 1327px;
+    background-color: white;
+    margin: auto;
+    margin-top: 30px;
+margin-bottom: 30px;
+}
+.footer__p{
+    font-family: Arial;
+font-size: 13px;
+font-weight: 400;
+line-height: 14.95px;
+text-align: center;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+color: white;
+padding-bottom: 30px;
+}
+
+
+@media(max-width:991px){
+    .footer__body{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 30px 0;
+        gap: 20px;
+        width: 90%;
+        max-width: 1327px;
+        margin: auto;
+    } 
+}
+@media(max-width:591px){
+    .footer__body{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 30px 0;
+        gap: 20px;
+        width: 90%;
+        max-width: 1327px;
+        margin: auto;
+    } 
+    .footer__item.large {
+        grid-column: span 2;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer__item h1{
+        font-size: 16px;
+    }
+
+    .footer__item p{
+        font-size: 11px;
+    }
+}
+
+

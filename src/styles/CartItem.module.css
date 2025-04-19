@@ -1,0 +1,84 @@
+.cartItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Elementlarni bir-biridan uzoqlashtirish */
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  position: relative;
+  background-color: #fff;
+  transition: box-shadow 0.3s;
+}
+
+.cartItem:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cartItem__image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.cartItem__details {
+  flex: 1;
+}
+
+.cartItem__title {
+  font-size: 18px;
+  margin: 0;
+  width: 90%;
+}
+
+.cartItem__price {
+  font-size: 16px;
+  color: #333;
+}
+
+.cartItem__quantity {
+  display: flex;
+  align-items: center;
+}
+
+.cartItem__button {
+  background-color: #f0f0f0;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0 5px;
+  border-radius: 5px;
+}
+
+.cartItem__remove {
+  background-color: transparent; /* Tozalangan rang */
+  border: none;
+  cursor: pointer;
+  font-size: 16px; /* Ikonkaning o'lchami */
+  margin-left: 15px; /* Boshqa elementlardan bo'shliq */
+  position: absolute; /* Joylashuvni o'zgartirish */
+  top: 10px; /* Yuqoridan bo'shliq */
+  right: 10px; /* O'ngdan bo'shliq */
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+ 
+
+
+
+  .cartItem__details {
+    width: 100%;
+    text-align: left;
+  }
+
+  .cartItem__button {
+    padding: 8px 12px;
+    font-size: 18px;
+  }
+
+  .cartItem__remove {
+    font-size: 14px; /* Kichik ekranlar uchun o'lchamni oshirish */
+  }
+}

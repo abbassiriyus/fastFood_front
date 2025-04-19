@@ -1,0 +1,117 @@
+/* index.module.css */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* padding: 20px; */
+padding-top: 0px;
+  }
+  
+  .productList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* flex-wrap: wrap; */
+    gap: 20px;
+    box-sizing: border-box;
+    justify-content: space-between;
+  }
+  
+  .productCard {
+    width: 100%; /* Ikki tadan joylashishini ta'minlash */
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .productCard:hover {
+    transform: translateY(-10px);
+  }
+  
+  .productCardImage {
+    /* width: 100%; */
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .productCardContent {
+    padding: 16px;
+  }
+  
+  .productCardTitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .productCardDescription {
+    font-size: 14px;
+    color: #555;
+    margin: 8px 0;
+  }
+  
+  .productCardPrice {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 8px;
+  }
+  
+  .productCardButton {
+    background-color: #1e40af;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: background-color 0.3s;
+  }
+  
+  .productCardButton:hover {
+    background-color: #2563eb;
+  }
+  .active-title {
+    background-color: #3498db; /* Aktif rang */
+    color: #fff; /* Matn rangi */
+    padding: 10px; /* Padding qo'shish */
+    border-radius: 5px; /* Burchaklarni yumshatish */
+  }
+  .BottomNavigation_categoriesWrapper{
+    max-width: 100%;
+    overflow-x: scroll;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    position: sticky;
+    top: 60px;
+    background-color: white; 
+    z-index: 12;
+  }
+  .BottomNavigation_link{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .BottomNavigation_name{
+    width: max-content;
+    padding: 5px 15px;
+    border-radius: 100px;
+    background:#f4f4f4;
+    transition: all .3s ease;
+    margin: 10px 0; 
+  }
+  
+  .ProductTitle{
+    margin-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  

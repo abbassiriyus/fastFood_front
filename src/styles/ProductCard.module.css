@@ -1,0 +1,172 @@
+/* ProductCard.css */
+.productCard {
+  tab-size: 4;
+  font-variation-settings: normal;
+  text-rendering: optimizeLegibility;
+  background-color: #fff;
+  border-radius: 16px;
+  transition: transform .3s;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  box-shadow: 0 4px 6px #0000001a;
+  }
+  
+  .productCard:hover {
+    transform: translateY(-6px);
+  }
+  .productCardImageDiv{
+    position: relative;
+    height: 200px;
+    background-color: #ebe3d1;
+    max-height: 260px;
+    margin: 10px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0px;
+  }
+  .productCardImage {
+    width: 90%;
+    object-fit: cover;
+    color: transparent;
+  }
+  
+  .productCardContent {
+    padding: 9px 14px;
+  }
+  .productCardPriceDel{
+    text-decoration: line-through;
+    margin-top: -3px;
+    font-size: 12px;
+  }
+  .productCardTitle {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .productCardDescription {
+    font-size: 14px;
+    height: 58px;
+    color: #555;
+  }
+  
+  .productCardPrice {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: -3px;
+    margin-bottom: 8px;
+  }
+  
+  .productCardButton {
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: relative;
+    white-space: nowrap;
+    vertical-align: middle;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    line-height: 1.2;
+    font-weight: var(--chakra-fontWeights-semibold);
+    transition-property: var(--chakra-transition-property-common);
+    transition-duration: var(--chakra-transition-duration-normal);
+    font-size: var(--chakra-fontSizes-md);
+    height: var(--chakra-sizes-10);
+    min-width: var(--chakra-sizes-10);
+    -webkit-padding-start: var(--chakra-space-4);
+    padding-inline-start: var(--chakra-space-4);
+    -webkit-padding-end: var(--chakra-space-4);
+    padding-inline-end: var(--chakra-space-4);
+    border-radius: 12px;
+    width: var(--chakra-sizes-full);
+    background: var(--chakra-colors-primary-200);
+    color: #7E5FA5;
+    width: 100%;
+    border: none;
+    margin-top: 10px;
+    background: #f2e7ff;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .productCardAction {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px; /* Tugmalar orasidagi bo'shliq */
+  }
+  
+  .productCardButton1 {
+    background-color: #f2e7ff; /* Tugma rangi */
+    color: #7e5fa5; /* Matn rangi */
+    border: none; /* Chegarasiz */
+    border-radius: 5px; /* Burchaklar yumshatilishi */
+    padding: 10px 15px; /* Tugma ichidagi bo'shliq */
+    font-size: 16px; /* Matn o'lchami */
+    cursor: pointer; /* Ko'rsatgichni o'zgartirish */
+    transition: background-color 0.3s; /* Rang o'zgarishi animatsiyasi */
+  }
+  
+  .productCardButton1:hover {
+    background-color: #f2e7ff; /* Hover holati uchun rang */
+  }
+  
+  .productCardCount {
+    font-size: 18px; /* Son o'lchami */
+    font-weight: bold; /* Qalin matn */
+    padding: 0 10px; /* Son atrofidagi bo'shliq */
+    min-width: 30px; /* Minimal kenglik */
+    text-align: center; /* Markazga joylashtirish */
+    border-radius: 5px; /* Burchaklar yumshatilishi */
+    background-color: #f0f0f0; /* Son fon rangi */
+  }
+ 
+  @media(max-width:420px){
+    .productCardImageDiv{
+      position: relative;
+      height: 140px;}
+      .productCardTitle {
+        font-size: 14px;
+        font-weight: bold;
+      }
+      .productCardButton {
+        font-size: 12px;
+        padding: 7px;
+      }
+      .productCardDescription{
+        font-size: 10px;
+      }
+      .productCardButton1{
+    padding: 5px 10px;
+    font-size: 12px;
+      }
+     .productCardCount{
+      padding: 5px 10px;
+      font-size: 12px;
+      }
+    }
+@media(max-width:360px){
+  .productCardImageDiv{
+    height: 120px;
+  } 
+}

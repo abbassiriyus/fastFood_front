@@ -1,0 +1,85 @@
+.ordersContainer {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    /* background-color: #f9f9f9; */
+    border-radius: 8px;
+    min-height: 80vh;
+    margin-top: 20px;
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+  }
+  
+  .ordersTitle {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .ordersList {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .orderItem {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .orderId {
+    font-size: 18px;
+    color: #0070f3;
+  }
+  
+  .orderDate {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .orderDetails {
+    margin: 10px 0;
+  }
+  
+  .orderDetailsTitle {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .orderDetail {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .orderTotal {
+    font-weight: bold;
+    font-size: 16px;
+    color: #0070f3;
+  }
+  
+  .emptyMessage {
+    text-align: center;
+    color: #888;
+  }
+  .filter {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .filterButton {
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .filterButton:hover {
+    background-color: #005bb5;
+  }

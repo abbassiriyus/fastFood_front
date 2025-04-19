@@ -1,0 +1,202 @@
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: white;
+    --foreground: #ededed;
+  }
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: black;
+  background: white;
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.global__multer .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.global__multer .slider {
+  position: relative;
+  width: 200px;
+}
+.global__multer .container_slide{
+  display: flex;
+  justify-content: space-between;
+  width: 78%;
+  margin: auto;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.global__multer .container_slide h1{
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.06px;
+  letter-spacing: 0.20000000298023224px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  
+}
+.global__multer .slider__track,
+.global__multer .slider__range,
+.global__multer .slider__left-value,
+.global__multer .slider__right-value {
+  position: absolute;
+}
+
+.global__multer .slider__track,
+.global__multer .slider__range {
+  border-radius: 3px;
+  height: 5px;
+}
+
+.global__multer .slider__track {
+  background-color: #ced4da;
+  width: 100%;
+  z-index: 1;
+}
+
+.global__multer .slider__range {
+  background-color: #DAE8F9;
+  z-index: 2;
+}
+
+.global__multer .slider__left-value,
+.global__multer .slider__right-value {
+  color: #00415A;
+  
+  font-size: 12px;
+  margin-top: 20px;
+}
+
+.global__multer .slider__left-value {
+  left: 6px;
+}
+
+.global__multer .slider__right-value {
+  right: -4px;
+}
+
+/* Removing the default appearance */
+.global__multer .thumb,
+.global__multer .thumb::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.global__multer .thumb {
+  pointer-events: none;
+  position: absolute;
+  height: 0;
+  width: 200px;
+  outline: none;
+}
+
+.global__multer .thumb--left {
+  z-index: 3;
+}
+
+.global__multer .thumb--right {
+  z-index: 4;
+}
+
+/* For Chrome browsers */
+.global__multer .thumb::-webkit-slider-thumb {
+  background-color: #00415A;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0 1px 1px #ced4da;
+  cursor: pointer;
+  height: 18px;
+  width: 18px;
+  margin-top: 4px;
+  pointer-events: all;
+  position: relative;
+}
+
+/* For Firefox browsers */
+.global__multer .thumb::-moz-range-thumb {
+  background-color: #f1f5f7;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0 1px 1px #ced4da;
+  cursor: pointer;
+  height: 18px;
+  width: 18px;
+  margin-top: 4px;
+  pointer-events: all;
+  position: relative;
+}
+
+
+.global_pagnation button{
+  border: 1px solid #00415A;
+  /* padding: 10px; */
+  margin: 5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+font-family: Roboto;
+font-size: 16px;
+font-weight: 400;
+/* line-height: 18.75px; */
+letter-spacing: 0.20000000298023224px;
+text-align: left;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+
+}
+.global_pagnation{
+  display: flex;
+  width: 90%;
+  justify-content: end;
+  align-items: center;
+  max-width: 1327px;
+  margin: auto;
+  margin-bottom: 40px;
+}
+.custom-toast{
+  background-color: #00415A;
+  color: #00415A;
+}

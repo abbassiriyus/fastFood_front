@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+.top_slider{
+    /* width: 97%; */
+    max-width: 1330px;
+    background-color: #ecf7ff;
+    min-height: 300px;
+    margin: auto;
+    width: 100%;
+    display: flex;
+    margin-top: 30px;
+padding-top: 30px;
+padding-bottom: 30px;   
+padding-left: 20px;
+align-items: stretch ;
+padding-right: 20px;
+margin-bottom: 20px;
+    
+}
+.main_1__h1{
+    font-family: Arial;
+font-size: 24px;
+font-weight: 700;
+line-height: 27.6px;
+letter-spacing: 0.04em;
+text-align: left;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+
+}
+.top_slider .card{
+display: flex;
+justify-content: space-around;
+flex-direction: column;
+min-height: 280px;
+/* margin-right: 5px; */
+}
+.top_slider .main_1{
+    width: 75%;
+}
+.top_slider .header_carousel{
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+}
+.top_slider .header_carousel img{
+    /* width: 120px; */
+    max-width: 90%;
+    height: 120px;
+}
+.top_slider .header_carousel .card_img{
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.top_slider .main_2{
+    /* background-color: green; */
+    width: 25%;
+}
+.top_slider .button_roll{
+    width: 100px;
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+    margin-right: 20px;
+    color: #1c2d38da;
+    font-size: 23px;
+    margin-top: 20px;
+    margin-bottom: -33px;
+}
+.top_slider .main_1 h1{
+margin-bottom: 20px;
+}
+.top_slider .main_1 .card{
+    padding: 20px;
+    padding-top: 10px;
+    background-color: white;
+    width: 100%;
+    box-shadow: 0px 2px 15px 0px #00000033;
+    border: 1px solid #DDEAF2;
+    border-radius: 6px;
+}
+
+.top_slider .header_carousel .card h5{
+    text-align: left;
+    margin-top: 5px;
+}
+ 
+.top_slider .header_carousel .card p{
+    text-align: left;
+    font-weight: 500;
+    margin-top: 10px;
+    color: rgb(44, 44, 44);
+    /* height: 60px; */
+}
+.top_slider .header_carousel .card h2{
+    text-align: left;
+    margin-top: 0;
+    font-size: 20px;
+    /* min-height: 60px;
+    margin-top: 30px; */
+    /* background-color: red; */
+}
+.top_slider .main_2 .section2{
+border: 1px solid #1c2d388e;
+width: 250px;
+height: 297px;
+margin: auto;
+/* height: 100%; */
+margin-top: 40px;
+padding: 20px;
+display: flex;
+justify-content: space-around;
+flex-direction: column;
+}
+
+
+.top_slider .main_2 .section2 button{
+font-family: "Open Sans",Arial,"Helvetica CY",Helvetica,Roboto,"Nimbus Sans L",sans-serif;
+outline: 0;
+display: inline-block;
+color: #fff;
+font-weight: bold;
+border-radius: 3px;
+cursor: pointer;
+white-space: nowrap;
+text-decoration: none;
+background-color: #1c2d38;
+border: solid 1px #1c2d38;
+line-height: normal;
+text-align: center;
+box-sizing: border-box;
+font-size: 16px;
+width: calc(100% + 20px);
+margin: 0 -10px;
+width: 90%;
+margin-left: 5%;
+padding-top: 14px;
+padding-bottom: 14px;
+justify-self: flex-end;
+margin-top: auto;
+}
+.top_slider .main_2 .section2 h2{
+    margin-bottom: 16px;
+    font: normal bold 21px/24px "Open Sans",Arial,"Helvetica CY",Helvetica,Roboto,"Nimbus Sans L",sans-serif;
+    color: #1c2d38;
+    box-sizing: border-box;
+}
+.top_slider .main_2 .section2 p{
+    margin-bottom: 16px;
+    font: normal normal 16px/20px "Open Sans",Arial,"Helvetica CY",Helvetica,Roboto,"Nimbus Sans L",sans-serif;
+    color: #1c2d38;
+    box-sizing: border-box;
+
+}
+.count_product{
+    font-family: Arial;
+    margin-bottom: 3px;
+font-size: 11px;
+font-weight: 400;
+line-height: 12.65px;
+text-align: left;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+color: #E30613;
+display: flex;
+gap: 7px;
+}
+@media (max-width:1200px){
+.top_slider{
+    display: block;
+}
+.top_slider .main_1{
+    width: 100%;
+}
+.top_slider .main_2 {
+width: 100%;
+margin-top: 20px;
+}
+.top_slider .main_2 .section2{
+width: 90%;
+margin: auto;
+padding: 10px;
+height: 200px;
+}
+.top_slider .button_roll{
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+}
+@media(max-width:500px){
+
+    .top_slider .main_1 .card{
+        padding: 16px;
+    }
+    .wer12{
+        display: none;
+    }
+    .top_slider .main_2 .section2 button{
+       padding-top: 7px;
+       padding-bottom: 7px; 
+    }
+    .top_slider .button_roll{
+        margin-bottom: 15px;
+        margin-top: 10px;
+    }
+    .top_slider{
+        padding-top: 10px;
+    }
+     .header_carousel .card p{
+        margin-top: 0px;
+        margin-bottom: 0px;
+        height: auto;
+        margin-top: 0px ;
+        margin-bottom: 8px;
+        font-size: 10px;
+        font-family: Inter;
+font-size: 12px;
+font-weight: 400;
+line-height: 16.94px;
+text-align: left;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+
+    }
+    .sliderproduct_count_product__UHpPG{
+        font-size: 9px;
+    }
+    .header_carousel .card h5{
+        font-family: Inter;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 14.52px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;        
+    }
+    .top_slider .header_carousel .card h2{
+        /* height: 60px; */
+        /* background-color: red; */
+        font-family: Inter;
+font-size: 14px;
+font-weight: 700;
+line-height: 24.2px;
+text-align: left;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+
+    }
+    .top_slider .card{
+        height: 190px;
+        margin-right: 3px;
+        }
+        .top_slider .header_carousel .card_img{
+            height: 100px;
+        }
+        .top_slider .header_carousel img{
+            width: 80px;
+            height: auto;
+            max-height: 90%;
+            background-color: red;
+        }
+        .top_slider .main_1 h1{
+            margin-bottom: 10px;
+            font-size: 24px;
+            }
+            .top_slider .main_2 .section2{
+                height: auto;
+                border: none;
+                padding: 0px;
+                }
+}
