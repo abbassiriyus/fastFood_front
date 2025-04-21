@@ -1,2 +1,2 @@
-var url='https://api.rce.uz'
+var url='https://ipa.rce.uz'
 module.exports=url;

@@ -1,10 +1,13 @@
 "use client";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Carousel from '../components/Carousel';
 import ProductCard from '../components/ProductCard';
 import styles from '../styles/food.module.css';
 import Footer from '../components/Footer';
+import { useRouter } from 'next/router';
+import axios from 'axios';
+import url from '@/host/host';
 const products = [
   {
     id: 1,
@@ -41,8 +44,39 @@ const products = [
 ];
 
 export default function Home() {
+var router=useRouter()
+var [category,setCategory]=useState([{product:[]}])
+var {fastfood}=router.query
+
+function getData() {
+  axios.get(`${url}/categories`).then(res=>{
+    
+    var my_category=res.data.filter(item=>item.fastfood_id==fastfood)
+    
+axios.get(`${url}/products`).then(res1=>{
+for (let i = 0; i < my_category.length; i++) {
+  my_category[i].product=[]
+for (let j = 0; j < res1.data.length; j++) {
+if(my_category[i].id==res1.data[j].category_id){
+  my_category[i].product.push(res1.data[j])
+}
+}
+}
+setCategory(my_category)
+}).catch(err=>{
+  console.log(err);  
+})
+  }).catch(err=>{
+    console.log(err);
+
+  })
+}
+
 
   useEffect(() => {
+    getData()
+
+    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -51,70 +85,54 @@ export default function Home() {
               document.querySelectorAll('#link_a span')[i].style="background:#f4f4f4;color:black"
              }
              document.querySelector(`#link${entry.target.id}`).style="background:rgb(210 165 62);color:white"
-            console.log("Ko'rinayotgan id:", entry.target.id);
 
            }
             }
         });
-    });
-
+    }); 
     const elements = document.querySelectorAll('[id]');
     elements.forEach(element => observer.observe(element));
-
+   
+  
+    
     return () => {
         elements.forEach(element => observer.unobserve(element));
     };
-}, []);
+},[fastfood]);
 
   return (
     <div style={{ maxWidth: '600px' }} className={styles.container}>
       <Navbar />
       <Carousel />
       <div id='link_a' className={styles.BottomNavigation_categoriesWrapper}>
-        <a className={styles.BottomNavigation_link} href='#span_title-kombo' >
-          <span id={"link"+"title-kombo"} className={styles.BottomNavigation_name}>Kombo</span>
+      {category.map((item,key)=>{
+      if(item.product.length>0){
+         return   <a className={styles.BottomNavigation_link} href={`#span_title-${item.id}`}>
+          <span className={styles.BottomNavigation_name} id={"link"+`title-${item.id}`}>{item.name}</span>
         </a>
-        <a className={styles.BottomNavigation_link} href='#span_title-pitsa'>
-          <span className={styles.BottomNavigation_name} id={"link"+"title-pitsa"}>Pitsa</span>
-        </a>
-        <a className={styles.BottomNavigation_link} href='#span_title-gazaklar'>
-          <span className={styles.BottomNavigation_name} id={"link"+"title-gazaklar"}>Gazaklar</span>
-        </a>
-        <a className={styles.BottomNavigation_link} id="/category/ichimliklar">
-          <span className={styles.BottomNavigation_name}>Ichimliklar</span>
-        </a>
-        <a className={styles.BottomNavigation_link} id="/category/salatlar">
-          <span className={styles.BottomNavigation_name}>Salatlar</span>
-        </a>
-        <a className={styles.BottomNavigation_link} id="/category/desertlar">
-          <span className={styles.BottomNavigation_name}>Desertlar</span>
-        </a>
-        <a className={styles.BottomNavigation_link} id="/category/souslar">
-          <span className={styles.BottomNavigation_name}>Souslar</span>
-        </a>
+ 
+      }
+    
+      })}
       </div>
-<span  style={{position:'relative',top:'-150px'}}  id="span_title-kombo"></span>
-      <h2 id="title-kombo"  className={`${styles.ProductTitle}`}>Kombo</h2>
+
+      {category.map((item,key)=>{
+      if(item.product.length>0){
+  return <><span key={key}  style={{position:'relative',top:'-150px'}}  id={`span_title-${item.id}`}></span>
+      <h2 id={`title-${item.id}`}  className={`${styles.ProductTitle}`}>{item.name}</h2>
       <div style={{ width: '100%' }} className={styles.productList}>
-        {products.map(product => (
-          <ProductCard key={product.id} product={product} />
+        {item.product.map(product1 => (
+          <ProductCard key={product1.id} product={product1} />
         ))}
-      </div>
-<span  style={{position:'relative',top:'-150px'}}  id="span_title-pitsa"></span>
-      <h2 id="title-pitsa" className={`${styles.ProductTitle}`}>Pitsa</h2>
-      <div style={{ width: '100%' }} className={styles.productList}>
-        {products.map(product => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
-<span style={{position:'relative',top:'-150px'}}  id="span_title-gazaklar"></span>
-      <h2 id="title-gazaklar" className={`${styles.ProductTitle}`}>Gazaklar</h2>
-      <div style={{ width: '100%' }} className={styles.productList}>
-        {products.map(product => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
-      
+      </div> </> 
+      } 
+      })}
+
+
+
+
+
+
      
       <Footer />
     </div>
