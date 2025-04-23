@@ -107,7 +107,7 @@ setCategory(my_category)
       <div id='link_a' className={styles.BottomNavigation_categoriesWrapper}>
       {category.map((item,key)=>{
       if(item.product.length>0){
-         return   <a className={styles.BottomNavigation_link} href={`#span_title-${item.id}`}>
+         return   <a key={key} className={styles.BottomNavigation_link} href={`#span_title-${item.id}`}>
           <span className={styles.BottomNavigation_name} id={"link"+`title-${item.id}`}>{item.name}</span>
         </a>
  

@@ -5,25 +5,38 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import url from '@/host/host';
 import axios from 'axios';
+import { useRouter } from 'next/router';
+import FastFoodLoader from '@/components/FastFoodLoader';
 
 
 const FoodCard = () => {
+  var router=useRouter()
+ var {stol}=router.query
+ var [loading,setLoading]=useState(true)
   const [viewCount, setViewCount] = useState(0);
 const [foodLogos,setFoodLogos]=useState([])
   useEffect(() => {
+   
     const interval = setInterval(() => {
       setViewCount(prevCount => prevCount + 1);
     }, 1000);
 axios.get(`${url}/users`).then(res=>{
 setFoodLogos(res.data.filter((item)=>item.type===2))
+setLoading(false)
 }).catch(err=>{
   console.log(err);
   
 })
     return () => clearInterval(interval);
   }, []);
+useEffect(()=>{
 
-  return (
+if(stol){  
+  localStorage.setItem("stol",stol)
+}
+},[stol])
+  return (<>
+{loading?(<FastFoodLoader/>):(
     <div style={{maxWidth:'600px',margin:'auto'}}>
       <Navbar />
       <div className={styles.cardContainer}>
@@ -45,7 +58,7 @@ setFoodLogos(res.data.filter((item)=>item.type===2))
         </div>
       </div>
       <Footer />
-    </div>
+    </div>)}</>
   );
 };
 
