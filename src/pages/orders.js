@@ -7,7 +7,7 @@ import axios from 'axios';
 import url from '@/host/host';
 import { io } from 'socket.io-client';
 
-// const socket = io(`${url}`); // Socket.io serveriga ulanish
+const socket = io(`${url}`); // Socket.io serveriga ulanish
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
@@ -95,13 +95,13 @@ const Orders = () => {
     getZakaz();
 
     // Socket.io hodisalarini tinglash
-    // socket.on('zakazUpdated', () => {
-    //   getZakaz(); // Yangilangan buyurtmalarni olish
-    // });
+    socket.on('zakazUpdated', () => {
+      getZakaz(); // Yangilangan buyurtmalarni olish
+    });
 
-    // return () => {
-    //   socket.off('zakazUpdated'); // Komponent o'chirilganda hodisani o'chirish
-    // };
+    return () => {
+      socket.off('zakazUpdated'); // Komponent o'chirilganda hodisani o'chirish
+    };
   }, []);
 
   return (
