@@ -1,4 +1,6 @@
 // CartContext.js
+import url from '@/host/host';
+import axios from 'axios';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const CartContext = createContext();
@@ -6,7 +8,7 @@ const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [cartCount, setCartCount] = useState(0);
-
+const [fastfood_1,setFastFood_1]=useState(null)
   // Mahsulotlar qo'shilganda yoki o'zgarganda cartCount yangilanishi
   useEffect(() => {
     setCartCount(cart.length);
@@ -32,7 +34,7 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem('shop', JSON.stringify(updatedCart)); // LocalStorage'ga saqlash
   };
 
- 
+
 
   // Cart o'zgaris  hi bilan localStorage'ni yangilash
 

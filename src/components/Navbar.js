@@ -1,25 +1,18 @@
-"use client"
+"use client";
 import Link from 'next/link';
-import { FaShoppingCart, FaClipboardCheck } from 'react-icons/fa';
+import { FaShoppingCart, FaClipboardCheck, FaPhone } from 'react-icons/fa'; // Telefon ikonasini qo'shish
 import styles from "../styles/Navbar.module.css";
 import { useCart } from './CartContext';
-import url from '@/host/host';
-
-// Socket.io serveriga ulanish
-
+import img from "../image/logo.jpg"
+import Image from 'next/image';
 const Navbar = () => {
-  const { cartCount, setCart } = useCart();
-
-  // LocalStorage'dan cartni olish
-
-
-
-
+  const { cartCount,fastfood_1 } = useCart();
 
   return (
     <nav className={styles.navbar}>
       <div className={styles.navbar__container}>
-        <Link href="/" className={styles.navbar__logo}>MenuGo</Link>
+        {/* <Image src={img}/> */}
+        <Link href="/" className={styles.navbar__logo}>menu<span>go</span></Link>
         <div className={styles.navbar__items}>
           <Link href="/cart" className={styles.navbar__item}>
             <FaShoppingCart className={styles.navbar__icon} />

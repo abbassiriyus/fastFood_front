@@ -7,7 +7,7 @@ import url from '@/host/host';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import FastFoodLoader from '@/components/FastFoodLoader';
-
+import { useCart } from "../components/CartContext"
 
 const FoodCard = () => {
   var router=useRouter()
@@ -21,7 +21,11 @@ const [foodLogos,setFoodLogos]=useState([])
       setViewCount(prevCount => prevCount + 1);
     }, 1000);
 axios.get(`${url}/users`).then(res=>{
-setFoodLogos(res.data.filter((item)=>item.type===2))
+setFoodLogos(
+    res.data
+        .filter(item => item.type === 2)
+        .sort((a, b) => a.orders - b.orders) // yoki localeCompare agar orders matn bo'lsa
+);
 setLoading(false)
 }).catch(err=>{
   console.log(err);
@@ -34,21 +38,20 @@ useEffect(()=>{
 if(stol){  
   localStorage.setItem("stol",stol)
 }
+
 },[stol])
   return (<>
 {loading?(<FastFoodLoader/>):(
     <div style={{maxWidth:'600px',margin:'auto'}}>
       <Navbar />
       <div className={styles.cardContainer}>
-        <h2 className={styles.title}>Barcha taomlarimiz</h2>
+        {/* <h2 className={styles.title}>Barcha taomlarimiz</h2> */}
         <div className={styles.logoContainer}>
           {foodLogos.map(logo => (
             <div onClick={()=>{window.location=`/food/?fastfood=${logo.id}`}} style={{ cursor: "pointer" }} key={logo.id} className={styles.logoCard}>
               <img src={logo.image} alt={logo.username} className={styles.logoImage} />
               <div className={styles.overlay}>
                 <h3 className={styles.logoName}>{logo.username}</h3>
-                <p className={styles.viewCount}>Ko'rish: {viewCount}</p>
-                <p className={styles.description}>{logo.description}</p>
               </div>
               <div className={styles.logoFooter}>
                 <h3 className={styles.footerText}>{logo.username}</h3>
@@ -57,7 +60,7 @@ if(stol){
           ))}
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>)}</>
   );
 };

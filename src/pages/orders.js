@@ -11,7 +11,20 @@ const socket = io(`${url}`); // Socket.io serveriga ulanish
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
+var [protsent,setProtsent]=useState(1)
 
+
+const protsentAdd = async () => {
+  try {
+    const res = await axios.get(`${url}/protsent`);
+    
+    if (res.data && res.data.length > 0 && res.data[0].foiz) {
+setProtsent(res.data[0].foiz)
+    }
+  } catch (err) {
+   setProtsent(1)
+  }
+}
   function formatDateTime(dateTime) {
     const options = {
       year: 'numeric',
@@ -24,64 +37,82 @@ const Orders = () => {
     return date.toLocaleString('uz-UZ', options);
   }
 
-  function getZakaz() {
+ function getZakaz() {
     let myShop = [];
     if (localStorage.getItem('myshop')) {
-      myShop = JSON.parse(localStorage.getItem('myshop'));
+        myShop = JSON.parse(localStorage.getItem('myshop'));
     }
     axios.get(`${url}/zakaz`).then(res => {
-      let filter_myShop = [];
-      for (let i = 0; i < myShop.length; i++) {
-        for (let j = 0; j < res.data.length; j++) {
-          if (myShop[i] == res.data[j].id) {
-            filter_myShop.push(res.data[j]);
-          }
-        }
-      }
-
-      axios.get(`${url}/zakaz_products`).then(res1 => {
-        axios.get(`${url}/products`).then(res4 => {
-          for (let i = 0; i < res1.data.length; i++) {
-            for (let j = 0; j < res4.data.length; j++) {
-              if (res1.data[i].product_id == res4.data[j].id) {
-                res1.data[i].name = res4.data[j].name;
-              }
+        let filter_myShop = [];
+        for (let i = 0; i < myShop.length; i++) {
+            for (let j = 0; j < res.data.length; j++) {
+                if (myShop[i] == res.data[j].id) {
+                    filter_myShop.push(res.data[j]);
+                }
             }
-          }
-
-          for (let i = 0; i < filter_myShop.length; i++) {
-            filter_myShop[i].items = [];
-            filter_myShop[i].total = 0;
-
-            for (let j = 0; j < res1.data.length; j++) {
-              if (filter_myShop[i].id == res1.data[j].zakaz_id) {
-                filter_myShop[i].items.push(res1.data[j]);
-                filter_myShop[i].total += (res1.data[j].count * res1.data[j].price);
-              }
-            }
-          }
-        axios.get(`${url}/offitsant`).then(res5=>{
-       for (let i = 0; i < filter_myShop.length; i++) {
-       for (let j = 0; j < res5.data.length; j++) {
-        if(filter_myShop[i].status!=0 && res5.data[j].id==filter_myShop[i].user_id){
-          filter_myShop[i].username=res5.data[j].username
         }
-        }} 
 
-          setOrders(filter_myShop);
-        }).catch(err=>{
+        axios.get(`${url}/zakaz_products`).then(res1 => {
+            axios.get(`${url}/products`).then(res4 => {
+                axios.get(`${url}/offitsant`).then(res5 => {
+                    axios.get(`${url}/users`).then(res6 => {
+                        // Fastfood ma'lumotlarini xaritalash
+                        const fastfoodMap = {};
+                        res6.data.forEach(fastfood => {
+                            fastfoodMap[fastfood.id] = fastfood.username; // yoki boshqa nom
+                        });
 
-        })
+                        // Mahsulot nomlarini qo'shish
+                        for (let i = 0; i < res1.data.length; i++) {
+                            for (let j = 0; j < res4.data.length; j++) {
+                                if (res1.data[i].product_id == res4.data[j].id) {
+                                    res1.data[i].name = res4.data[j].name;
+                                }
+                            }
+                            // Fastfood nomini qo'shish
+                            if (fastfoodMap[res1.data[i].fastfood_id]) {
+                                res1.data[i].fastfood_name = fastfoodMap[res1.data[i].fastfood_id];
+                            }
+                        }
 
-        
+                        for (let i = 0; i < filter_myShop.length; i++) {
+                            filter_myShop[i].items = [];
+                            filter_myShop[i].total = 0;
+
+                            for (let j = 0; j < res1.data.length; j++) {
+                                if (filter_myShop[i].id == res1.data[j].zakaz_id) {
+                                    filter_myShop[i].items.push(res1.data[j]);
+                                    filter_myShop[i].total += (res1.data[j].count * res1.data[j].price);
+                                }
+                            }
+                            // Fastfood username qo'shish
+                            if (filter_myShop[i].status != 0) {
+                                for (let j = 0; j < res5.data.length; j++) {
+                                    if (res5.data[j].id == filter_myShop[i].user_id) {
+                                        filter_myShop[i].username = res5.data[j].username;
+                                    }
+                                }
+                            }
+                        }
+                        console.log(filter_myShop);
+                        
+
+                        setOrders(filter_myShop);
+                    }).catch(err => {
+                        console.error(err);
+                    });
+
+                }).catch(err => {
+                    console.error(err);
+                });
+            }).catch(err => {
+                console.error(err);
+            });
+        }).catch(err => {
+            console.error(err);
         });
-      }).catch(err => {
-        console.error(err);
-      });
-    }).catch(err => {
-      console.error(err);
     });
-  }
+}
 
   const [filter, setFilter] = useState(0); // Filtr state
 
@@ -93,7 +124,7 @@ const Orders = () => {
 
   useEffect(() => {
     getZakaz();
-
+protsentAdd()
     // Socket.io hodisalarini tinglash
     socket.on('zakazUpdated', () => {
       getZakaz(); // Yangilangan buyurtmalarni olish
@@ -105,7 +136,7 @@ const Orders = () => {
   }, []);
 
   return (
-    <div style={{ maxWidth: '600px', margin: 'auto' }}>
+    <div style={{ maxWidth: '600px', margin: 'auto',minHeight:'100vh', background: 'linear-gradient(135deg, #e0f7fa, #80deea)' }}>
       <Navbar />
       <div className={styles.ordersContainer}>
         <h2 className={styles.ordersTitle}>Buyurtmalar</h2>
@@ -122,9 +153,9 @@ const Orders = () => {
           ) : (
             filteredOrders.map(order => (
               <div key={order.id} style={{
-                backgroundColor: order.status === 0 ? '#ff00004a' :
-                  order.status === 1 ? '#0080004a' :
-                    order.status === 2 ? '#ffa5004a' : 'white'
+                // backgroundColor: order.status === 0 ? '#ff000011' :
+                //   order.status === 1 ? '#00800011' :
+                //     order.status === 2 ? '#ffa50011' : 'white'
               }} className={styles.orderItem}>
                 <h3 className={styles.orderId}>Buyurtma ID: {order.id}</h3>
                 <p className={styles.orderDate}>Sana: {formatDateTime(order.created_at)}</p>
@@ -134,19 +165,25 @@ const Orders = () => {
                  
                   {order.items.map(item => (
                     <div key={item.id} className={styles.orderDetail}>
-                      <p>{item.name} - {item.count} x ${item.price}</p>
+                      <p>{item.name}({item.fastfood_name}) - {item.count} x {item.price.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, " ")} so'm</p> 
                     </div>
                   ))}
                 </div>
-                <p className={styles.orderTotal}>
-                  Umumiy: ${order.total}
-                </p>
+                 <h6>
+                  barchasi: {order.total.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, " ")} so'm
+                </h6>
+                 <h6>
+                  xizmat haqqi({protsent}%): {(order.total/100*protsent).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, " ")} so'm
+                </h6>
+                <h4 className={styles.orderTotal}>
+                  Umumiy: {(order.total+order.total/100*protsent).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, " ")} so'm
+                </h4>
               </div>
             ))
           )}
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

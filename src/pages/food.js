@@ -7,51 +7,23 @@ import styles from '../styles/food.module.css';
 import Footer from '../components/Footer';
 import { useRouter } from 'next/router';
 import axios from 'axios';
+import { useCart } from '../components/CartContext';
+
 import url from '@/host/host';
-const products = [
-  {
-    id: 1,
-    name: 'Pizza Margherita',
-    description: 'Delicious pizza with fresh tomatoes and mozzarella.',
-    price: 10,
-    image: 'https://www.freeiconspng.com/uploads/restaurant-food-dish-png-10.png',
-    category: 'Pitsa',
-  },
-  {
-    id: 2,
-    name: 'Sushi Rolls',
-    description: 'Fresh sushi rolls with tuna and avocado.',
-    price: 15,
-    image: 'https://www.freeiconspng.com/uploads/restaurant-food-dish-png-10.png',
-    category: 'Gazaklar',
-  },
-  {
-    id: 3,
-    name: 'Burger Deluxe',
-    description: 'Juicy beef burger with cheese and lettuce.',
-    price: 8,
-    image: 'https://www.freeiconspng.com/uploads/restaurant-food-dish-png-10.png',
-    category: 'Gazaklar',
-  },
-  {
-    id: 4,
-    name: 'Pasta Alfredo',
-    description: 'Creamy pasta with Alfredo sauce and chicken.',
-    price: 12,
-    image: 'https://www.freeiconspng.com/uploads/restaurant-food-dish-png-10.png',
-    category: 'Kombo',
-  },
-];
+
 
 export default function Home() {
 var router=useRouter()
 var [category,setCategory]=useState([{product:[]}])
 var {fastfood}=router.query
+const { setCart,protsentAdd } = useCart();
 
 function getData() {
   axios.get(`${url}/categories`).then(res=>{
     
-    var my_category=res.data.filter(item=>item.fastfood_id==fastfood)
+   var my_category = res.data
+    .filter(item => item.fastfood_id == fastfood)
+    .sort((a, b) => a.orders - b.orders);
     
 axios.get(`${url}/products`).then(res1=>{
 for (let i = 0; i < my_category.length; i++) {
@@ -75,29 +47,36 @@ setCategory(my_category)
 
   useEffect(() => {
     getData()
-
-    
-    const observer = new IntersectionObserver((entries) => {
+if(localStorage.getItem('shop')){
+setCart(JSON.parse(localStorage.getItem('shop')))
+}
+    setTimeout(() => {
+        const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                
            if ( !((entry.target.id).includes("span")) && (entry.target.id).includes("title") && document.querySelector(`#link${entry.target.id}`)) {
              for (let i = 0; i < document.querySelectorAll('#link_a span').length; i++) {
               document.querySelectorAll('#link_a span')[i].style="background:#f4f4f4;color:black"
+              
              }
              document.querySelector(`#link${entry.target.id}`).style="background:rgb(210 165 62);color:white"
 
            }
+       
             }
         });
     }); 
     const elements = document.querySelectorAll('[id]');
     elements.forEach(element => observer.observe(element));
-   
-  
-    
-    return () => {
+     return () => {
         elements.forEach(element => observer.unobserve(element));
     };
+    }, 1000);
+  
+  
+    
+  
 },[fastfood]);
 
   return (
@@ -118,7 +97,7 @@ setCategory(my_category)
 
       {category.map((item,key)=>{
       if(item.product.length>0){
-  return <><span key={key}  style={{position:'relative',top:'-150px'}}  id={`span_title-${item.id}`}></span>
+  return <><span key={key}  style={{position:'relative',top:'-170px'}}  id={`span_title-${item.id}`}></span>
       <h2 id={`title-${item.id}`}  className={`${styles.ProductTitle}`}>{item.name}</h2>
       <div style={{ width: '100%' }} className={styles.productList}>
         {item.product.map(product1 => (
@@ -134,7 +113,7 @@ setCategory(my_category)
 
 
      
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

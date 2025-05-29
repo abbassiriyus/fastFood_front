@@ -30,6 +30,7 @@
   }
   .productCardImage {
     width: 90%;
+    max-height: 107%;
     object-fit: cover;
     color: transparent;
   }
@@ -116,29 +117,29 @@
     gap: 10px; /* Tugmalar orasidagi bo'shliq */
   }
   
-  .productCardButton1 {
-    background-color: #f2e7ff; /* Tugma rangi */
-    color: #7e5fa5; /* Matn rangi */
-    border: none; /* Chegarasiz */
-    border-radius: 5px; /* Burchaklar yumshatilishi */
-    padding: 10px 15px; /* Tugma ichidagi bo'shliq */
-    font-size: 16px; /* Matn o'lchami */
-    cursor: pointer; /* Ko'rsatgichni o'zgartirish */
-    transition: background-color 0.3s; /* Rang o'zgarishi animatsiyasi */
-  }
-  
-  .productCardButton1:hover {
-    background-color: #f2e7ff; /* Hover holati uchun rang */
-  }
+.productCardButton1 {
+      background-color: #f2e7ff;
+    color: #7e5fa5;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.productCardButton1:hover {
+  background-color: #e0d3ff; /* Hover holati uchun rang o'zgarishi */
+}
   
   .productCardCount {
-    font-size: 18px; /* Son o'lchami */
-    font-weight: bold; /* Qalin matn */
-    padding: 0 10px; /* Son atrofidagi bo'shliq */
-    min-width: 30px; /* Minimal kenglik */
-    text-align: center; /* Markazga joylashtirish */
-    border-radius: 5px; /* Burchaklar yumshatilishi */
-    background-color: #f0f0f0; /* Son fon rangi */
+      font-size: 18px;
+    font-weight: bold;
+    padding: 10px 9px;
+    min-width: 30px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #f0f0f0;
   }
  
   @media(max-width:420px){

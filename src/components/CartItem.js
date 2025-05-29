@@ -1,14 +1,27 @@
 "use client"
 import { FaTrash } from 'react-icons/fa'; // Ikonka kutubxonasini import qiling
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from '../styles/CartItem.module.css';
 import { useCart } from './CartContext'; // Import the CartContext
 
 const CartItem = ({ item, onRemove }) => {
   const { setCart } = useCart(); // useCart'dan setCart funksiyasini oling
   const [quantity, setQuantity] = useState(item.quantity);
+var [protsent,setProtsent]=useState(1)
 
+
+const protsentAdd = async () => {
+  try {
+    const res = await axios.get(`${url}/protsent`);
+    
+    if (res.data && res.data.length > 0 && res.data[0].foiz) {
+setProtsent(res.data[0].foiz)
+    }
+  } catch (err) {
+   setProtsent(1)
+  }
+}
   const handleIncrement = () => {
     const newQuantity = quantity + 1;
     setQuantity(newQuantity);
@@ -32,13 +45,16 @@ const CartItem = ({ item, onRemove }) => {
       )
     );
   };
+  useEffect(()=>{
+protsentAdd()
+  },[])
 
   return (
     <div className={styles.cartItem}>
     <img src={item.image} alt={item.name} className={styles.cartItem__image} />
     <div className={styles.cartItem__details}>
       <h4 className={styles.cartItem__title}>{item.name}</h4>
-      <p className={styles.cartItem__price}>${item.price}</p>
+      <p className={styles.cartItem__price}>{item.price*item.quantity} so'm</p>
       <div className={styles.cartItem__quantity}>
         <button onClick={handleDecrement} className={styles.cartItem__button}>-</button>
         <span className={styles.cartItem__count}>{quantity}</span>

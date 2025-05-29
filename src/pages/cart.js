@@ -7,12 +7,11 @@ import Navbar from '@/components/Navbar';
 import { useCart } from '../components/CartContext';
 import axios from 'axios';
 import url from '@/host/host';
-import { useRouter } from 'next/router';
+
 
 const Cart = () => {
   const { cart, setCart } = useCart();
   const [cartItems, setCartItems] = useState([]);
-
 
   const handleRemoveItem = (id) => {
     const updatedCart = cartItems.filter(item => item.id !== id);
@@ -106,13 +105,13 @@ const Cart = () => {
           ))}
         </div>
         <div className={styles.cart__total}>
-          <h3>Total: ${getTotalPrice()}</h3>
+          <h3>Total: {getTotalPrice() } so'm</h3>
         </div>
         <button onClick={handleOrder} className={styles.cart__orderButton}>
           Buyurtma berish
         </button>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
