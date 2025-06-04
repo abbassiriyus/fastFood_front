@@ -8,12 +8,14 @@ import Image from 'next/image';
 const Navbar = () => {
   const { cartCount,fastfood_1 } = useCart();
 
-  return (
+  return (<>
     <nav className={styles.navbar}>
       <div className={styles.navbar__container}>
         {/* <Image src={img}/> */}
         <Link href="/" className={styles.navbar__logo}>menu<span>go</span></Link>
-        <div className={styles.navbar__items}>
+        
+      </div>
+    </nav><div className={styles.navbar__items}>
           <Link href="/cart" className={styles.navbar__item}>
             <FaShoppingCart className={styles.navbar__icon} />
             <span className={styles.navbar__notification}>{cartCount}</span>
@@ -21,9 +23,7 @@ const Navbar = () => {
           <Link href="/orders" className={styles.navbar__item}>
             <FaClipboardCheck className={styles.navbar__icon} />
           </Link>
-        </div>
-      </div>
-    </nav>
+        </div></>
   );
 };
 

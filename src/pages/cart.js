@@ -48,12 +48,7 @@ const Cart = () => {
 
       axios.post(`${url}/zakaz`, data).then(res => {
         console.log(res.data);
-        cartItems.forEach((item) => {
-            item.zakaz_id = res.data.id;
-            item.product_id = item.id;
-            item.count = item.quantity;
-            formData.append('products[]', JSON.stringify(item));
-        });
+       
     
         // Agar faqat bitta mahsulot bo'lsa, formData ga qo'shiladi
         if (cartItems.length === 1) {
@@ -62,6 +57,13 @@ const Cart = () => {
             singleItem.product_id = singleItem.id;
             singleItem.count = singleItem.quantity;
             formData.append('products[]', JSON.stringify(singleItem));
+        }else{
+           cartItems.forEach((item) => {
+            item.zakaz_id = res.data.id;
+            item.product_id = item.id;
+            item.count = item.quantity;
+            formData.append('products[]', JSON.stringify(item));
+        });
         }
     
         axios.post(`${url}/zakaz_products`, formData).then(res1 => {

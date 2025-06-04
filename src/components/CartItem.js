@@ -8,20 +8,9 @@ import { useCart } from './CartContext'; // Import the CartContext
 const CartItem = ({ item, onRemove }) => {
   const { setCart } = useCart(); // useCart'dan setCart funksiyasini oling
   const [quantity, setQuantity] = useState(item.quantity);
-var [protsent,setProtsent]=useState(1)
 
 
-const protsentAdd = async () => {
-  try {
-    const res = await axios.get(`${url}/protsent`);
-    
-    if (res.data && res.data.length > 0 && res.data[0].foiz) {
-setProtsent(res.data[0].foiz)
-    }
-  } catch (err) {
-   setProtsent(1)
-  }
-}
+
   const handleIncrement = () => {
     const newQuantity = quantity + 1;
     setQuantity(newQuantity);
@@ -45,9 +34,7 @@ setProtsent(res.data[0].foiz)
       )
     );
   };
-  useEffect(()=>{
-protsentAdd()
-  },[])
+
 
   return (
     <div className={styles.cartItem}>

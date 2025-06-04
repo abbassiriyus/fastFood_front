@@ -16,7 +16,7 @@ export default function Home() {
 var router=useRouter()
 var [category,setCategory]=useState([{product:[]}])
 var {fastfood}=router.query
-const { setCart,protsentAdd } = useCart();
+const { setCart } = useCart();
 
 function getData() {
   axios.get(`${url}/categories`).then(res=>{

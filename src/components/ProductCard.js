@@ -8,24 +8,12 @@ const ProductCard = ({ product }) => {
   const { addToCart, cart, setCart } = useCart();
   const [quantity, setQuantity] = useState(0);
 
-var [protsent,setProtsent]=useState(1)
 
 
 
-const protsentAdd = async (price) => {
-  try {
-    const res = await axios.get(`${url}/protsent`);
-    
-    if (res.data && res.data.length > 0 && res.data[0].foiz) {
-setProtsent(res.data[0].foiz)
-    }
-  } catch (err) {
-   setProtsent(1)
-  }
-}
+
   // Mahsulot avvaldan sotib olinganmi yoki yo'qligini tekshirish
   useEffect(() => {
-    protsentAdd()
     const existingProduct = cart.find(item => item.id === product.id);
     if (existingProduct) {
       setQuantity(existingProduct.quantity);

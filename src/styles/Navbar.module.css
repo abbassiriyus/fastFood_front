@@ -8,6 +8,8 @@
   z-index: 10;
   border-bottom-left-radius: 17px;
   border-bottom-right-radius: 17px;
+display: flex;
+justify-content: center;
 }
 
 .navbar__container {
@@ -21,12 +23,13 @@
 }
 .navbar__logo {
   font-family: "Nunito", sans-serif;
-  font-size: 24px;
+  font-size: 35px;
   color: #ecf0f1; /* Yorqin oq rang */
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s;
   letter-spacing: -0.5px;
+
 }
 .navbar__logo span {
   color: #ffd702;
@@ -37,6 +40,20 @@
   display: flex;
   align-items: center; /* Vertikal markazlash */
   gap: 20px; /* Elementlar orasidagi bo'shliqlar */
+     position: fixed;
+    bottom:  0px;
+    background: green;
+    padding: 10px;
+    border-radius: 15px 15px 0 0;
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;z-index: 11;
 }
 
 .navbar__item {
