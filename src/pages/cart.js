@@ -22,7 +22,20 @@ const Cart = () => {
   const getTotalPrice = () => {
     return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
   };
+const sendTelegramNotification = async (text) => {
+  const botToken = "7651476196:AAHMF3_pjcNiwDzJJvHGjRJM6nz7Gh40yDk";
+  const chatId = "-4634503890"; // O'zingizniki bilan almashtiring
 
+  try {
+    await axios.post(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+      chat_id: chatId,
+      text,
+      parse_mode: "HTML",
+    });
+  } catch (err) {
+    console.error("Telegramga yuborishda xatolik:", err);
+  }
+};
   const handleOrder = () => {
     // Buyurtma berish jarayonini boshlash
     if (cartItems.length === 0) {
@@ -74,6 +87,14 @@ const Cart = () => {
             myshop.push(res.data.id);
             localStorage.setItem("myshop", JSON.stringify(myshop));
             setCart([]);
+  // ✅ Telegramga habar yuborish
+  sendTelegramNotification(
+    "🛎 <b>Yangi buyurtma!</b>\n📦 Mahsulotlar soni: " +
+      cartItems.length +
+      "\n🪑 Stol raqami: " +
+      localStorage.getItem("stol")
+  );
+
             alert("Buyurtmani yubordik");
             window.location = '/orders';
         }).catch(err => {
