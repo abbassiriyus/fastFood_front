@@ -19,30 +19,35 @@ var {fastfood}=router.query
 const { setCart } = useCart();
 
 function getData() {
-  axios.get(`${url}/categories`).then(res=>{
-    
-   var my_category = res.data
-    .filter(item => item.fastfood_id == fastfood)
-    .sort((a, b) => a.orders - b.orders);
-    
-axios.get(`${url}/products`).then(res1=>{
-for (let i = 0; i < my_category.length; i++) {
-  my_category[i].product=[]
-for (let j = 0; j < res1.data.length; j++) {
-if(my_category[i].id==res1.data[j].category_id){
-  my_category[i].product.push(res1.data[j])
-}
-}
-}
-setCategory(my_category)
-}).catch(err=>{
-  console.log(err);  
-})
-  }).catch(err=>{
-    console.log(err);
+  axios.get(`${url}/categories`).then(res => {
+    var my_category = res.data
+      .filter(item => item.fastfood_id == fastfood)
+      .sort((a, b) => a.orders - b.orders); // Category-larni sort qilindi
 
-  })
+    axios.get(`${url}/products`).then(res1 => {
+      for (let i = 0; i < my_category.length; i++) {
+        my_category[i].product = [];
+
+        for (let j = 0; j < res1.data.length; j++) {
+          if (my_category[i].id == res1.data[j].category_id) {
+            my_category[i].product.push(res1.data[j]);
+          }
+        }
+
+        // Har bir category ichidagi product-larni orders bo'yicha sort qilamiz
+        my_category[i].product.sort((a, b) => a.orders - b.orders);
+      }
+
+      setCategory(my_category);
+    }).catch(err => {
+      console.log(err);
+    });
+
+  }).catch(err => {
+    console.log(err);
+  });
 }
+
 
 
   useEffect(() => {
