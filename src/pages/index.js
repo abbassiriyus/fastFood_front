@@ -58,7 +58,7 @@ if(stol){
             </div>
           ))}
         </div>
-              </div>More actions
+              </div>
       {/* <Footer /> */}
     </div>)}</>
   );
