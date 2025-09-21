@@ -14,8 +14,9 @@ import FastFoodLoader from "@/components/FastFoodLoader"; // ✅ loading compone
 
 export default function Home() {
   const router = useRouter();
+
   const [category, setCategory] = useState([]);
-  const { fastfood } = router.query;
+  const { fastfood,stol } = router.query;
   const { setCart } = useCart();
   const [loading, setLoading] = useState(true); // ✅ loading state
 
@@ -41,6 +42,13 @@ export default function Home() {
       setLoading(false); // ✅ loading tugadi
     }
   };
+
+useEffect(()=>{
+
+if(stol){  
+  localStorage.setItem("stol",stol)
+}
+},[stol])
 
   useEffect(() => {
     if (!router.isReady || !fastfood) return;
