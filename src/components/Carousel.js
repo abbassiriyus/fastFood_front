@@ -1,60 +1,60 @@
 "use client";
-import React, { useState, useEffect } from 'react';
-import styles from '../styles/Carousel.module.css';
-import classNames from 'classnames';
-import { useRouter } from 'next/router';
-import axios from 'axios';
-import url from '@/host/host';
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import axios from "axios";
+import url from "@/host/host";
 
+// Swiper importlari
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import styles from "../styles/Carousel.module.css";
 
 const Carousel = () => {
-  var [images,setImages]=useState([{image:"image"}])
-  const [currentIndex, setCurrentIndex] = useState(0);
-  var router=useRouter()
-  var { fastfood }=router.query
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
-  };
+  const [images, setImages] = useState([]);
+  const router = useRouter();
+  const { fastfood } = router.query;
 
-  useEffect(()=>{
-console.log(fastfood);
-if(fastfood){
-axios.get(`${url}/carousel`).then(res=>{
-setImages(res.data.filter(item=>item.fastfood_id==fastfood))
-})
-}
-
-  },[fastfood])
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
-  };
-
+  // Ma'lumotlarni yuklash
   useEffect(() => {
-    const interval = setInterval(nextSlide, 6000); // har 2 sekundda slayd almashadi
-    return () => clearInterval(interval); // komponent o‘chirilsa, interval ham to‘xtaydi
-  }, [currentIndex]); // har o‘zgarishda yangilanadi
+    if (fastfood) {
+      axios.get(`${url}/carousel`).then((res) => {
+        const filtered = res.data.filter(
+          (item) => item.fastfood_id == fastfood
+        );
+        setImages(filtered);
+      });
+    }
+  }, [fastfood]);
 
-  return (<>
-  {images.length>1?(<div className={styles.carousel}>
-      <button className={classNames(styles.carousel__button, styles.prev)} onClick={prevSlide}>
-        ‹
-      </button>
-      <div className={styles.carousel__item}>
-        <img
-          src={images[currentIndex].image}
-          alt={`Ad ${currentIndex + 1}`}
-          className={styles.carousel__image}
-        />
-      </div>
-      <button className={classNames(styles.carousel__button,styles.next)} onClick={nextSlide}>
-        ›
-      </button>
-    </div>):<></>}
-     </>
+  if (images.length < 1) return null;
+
+  return (
+    <div className={styles.carousel}>
+      <Swiper
+        modules={[Autoplay, Navigation, Pagination]}
+        spaceBetween={10}
+        slidesPerView={1}
+        navigation
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 6000, disableOnInteraction: false }}
+        loop={true}
+        className={styles.swiper}
+      >
+        {images.map((item, idx) => (
+          <SwiperSlide key={idx}>
+            <img
+              src={item.image}
+              alt={`Reklama ${idx + 1}`}
+              className={styles.carousel__image}
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   );
 };
 

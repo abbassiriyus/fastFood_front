@@ -20,13 +20,16 @@ const [foodLogos,setFoodLogos]=useState([])
     const interval = setInterval(() => {
       setViewCount(prevCount => prevCount + 1);
     }, 1000);
-axios.get(`${url}/users`).then(res=>{
-setFoodLogos(
-    res.data
+axios.get(`${url}/users`).then(res => {
+    const data = res.data
         .filter(item => item.type === 2)
-        .sort((a, b) => a.orders - b.orders) // yoki localeCompare agar orders matn bo'lsa
-);
+        .map(item => ({
+            ...item,
+            _sortOrder: item.orders + Math.random() * 0.01 // 0.00 - 0.01 oralig‘ida random qo‘shiladi
+        }))
+        .sort((a, b) => a._sortOrder - b._sortOrder); // faqat _sortOrder bo‘yicha tartiblaydi
 setLoading(false)
+    setFoodLogos(data);
 }).catch(err=>{
   console.log(err);
   

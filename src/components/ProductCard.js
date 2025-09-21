@@ -65,18 +65,19 @@ const ProductCard = ({ product }) => {
 
   return (
     <div className={styles.productCard}>
-      <div className={styles.productCardImageDiv}>
+      <div onClick={handleAddToCart} className={styles.productCardImageDiv}>
         <img
           src={product.image}
           alt={product.name}
           className={styles.productCardImage}
+          
         />
       </div>
       <div className={styles.productCardContent}>
         {/* <del className={styles.productCardPriceDel}>${product.price}</del> */}
-        <p className={styles.productCardPrice}>{ product.price } so'm</p>
-        <h3 className={styles.productCardTitle}>{product.name}</h3>
-        <p className={styles.productCardDescription}>{product.description.length > 90
+        <p onClick={handleAddToCart} className={styles.productCardPrice}>{ product.price } so'm</p>
+        <h3 onClick={handleAddToCart} className={styles.productCardTitle}>{product.name}</h3>
+        <p onClick={handleAddToCart} className={styles.productCardDescription}>{product.description.length > 90
     ? `${product.description.slice(0, 90)}...`
     : product.description}</p>
         {quantity > 0 ? (
