@@ -9,10 +9,17 @@ export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [cartCount, setCartCount] = useState(0);
 const [fastfood_1,setFastFood_1]=useState(null)
-  // Mahsulotlar qo'shilganda yoki o'zgarganda cartCount yangilanishi
+
+// Birinchi renderda localStorage'dan olish
+  useEffect(() => {
+    const savedCart = JSON.parse(localStorage.getItem("shop")) || [];
+    setCart(savedCart);
+  }, []);
+
+  // cart o'zgarsa → cartCount va localStorage yangilanadi
   useEffect(() => {
     setCartCount(cart.length);
-    localStorage.setItem('shop', JSON.stringify(cart)); // LocalStorage'ga saqlash
+    localStorage.setItem("shop", JSON.stringify(cart));
   }, [cart]);
 
   const addToCart = (product, quantity) => {

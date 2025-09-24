@@ -51,7 +51,7 @@ if(stol){
 },[stol])
 
   useEffect(() => {
-    if (!router.isReady || !fastfood) return;
+    
 
     getData();
 

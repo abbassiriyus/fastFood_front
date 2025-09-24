@@ -50,7 +50,8 @@ if(stol){
         {/* <h2 className={styles.title}>Barcha taomlarimiz</h2> */}
         <div className={styles.logoContainer}>
           {foodLogos.map(logo => (
-            <div onClick={()=>{window.location=`/food/?fastfood=${logo.id}`}} style={{ cursor: "pointer" }} key={logo.id} className={styles.logoCard}>
+            <div onClick={()=>{window.location=`/food/?fastfood=${logo.id}`}} 
+            style={{ cursor: "pointer" }} key={logo.id} className={styles.logoCard}>
               <img src={logo.image} alt={logo.username} className={styles.logoImage} />
               <div className={styles.overlay}>
                 <h3 className={styles.logoName}>{logo.username}</h3>
