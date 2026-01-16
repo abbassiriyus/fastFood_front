@@ -1,0 +1,92 @@
+.carousel {
+  position: relative;
+  width: 98%;
+  max-width: 1000px;          /* kerak bo'lsa kattaroq qilishingiz mumkin */
+  margin: 0 auto 20px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  background: #f8f9fa;
+  margin-top: 20px;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel__image {
+  width: 100%;
+  height: 280px;              /* mobil uchun moslashtirilgan balandlik */
+  object-fit: cover;
+  display: block;
+}
+
+/* Navigation tugmalari */
+.swiper-button-prev,
+.swiper-button-next {
+  color: white !important;
+  background: rgba(0, 0, 0, 0.4);
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50%;
+  transition: all 0.25s ease;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  font-size: 1.4rem !important;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background: rgba(0, 0, 0, 0.7);
+  transform: scale(1.1);
+}
+
+.swiper-button-prev {
+  left: 15px !important;
+}
+
+.swiper-button-next {
+  right: 15px !important;
+}
+
+/* Pagination (nuqtalar) */
+.swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.7);
+  opacity: 0.8;
+}
+
+.swiper-pagination-bullet-active {
+  background: white;
+  opacity: 1;
+}
+
+/* Loading va error holatlari */
+.loading,
+.error {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+  font-size: 1.1rem;
+  background: #f8f9fa;
+  border-radius: 16px;
+}
+
+.error {
+  color: #dc2626;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .carousel__image {
+    height: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel__image {
+    height: 180px;
+  }
+}
