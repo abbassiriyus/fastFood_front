@@ -15,9 +15,9 @@ const Navbar = () => {
     <>
       <nav className={styles.navbar}>
         <div className={styles.navbar__container}>
-          <Link href="/" className={styles.navbar__logo}>
+          <a onClick={()=>{window.location=`/?stol=${localStorage.getItem("stol")}`}} className={styles.navbar__logo}>
             menu<span>go</span>
-          </Link>
+          </a>
         </div>
       </nav>
 

@@ -132,6 +132,7 @@ const Cart = () => {
             zakaz_id: zakazId,
             product_id: item.id,
             count: item.quantity,
+            price: item.price,
             fastfood_id: item.fastfood_id
           }));
         });
